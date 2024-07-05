@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        td>img {
+            width: 250px;
+            height: 250px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="Display-5 text-center">Comparing A Products</div>
+
+    <div class="container">
+        <table>
+            <thead>
+                <th>Products Name</th>
+                <td>
+                    <select name="" id="select1" onchange="item_1(this.value);" >
+                    <option value="">Select AnyOne</option>
+                </select></td>
+                <td>
+                    <select name="" id="select2" onchange="item_2(this.value);" >
+                    <option value="">Select AnyOne</option>
+                </select></td>
+            </thead>
+            <tbody>
+               <tr>
+                <th >Product Image</th>
+                <td >
+                    <img src="Images/No-Image-Placeholder.svg.png" id="image1" alt="">
+                </td>
+            
+             
+                <td ><img src="Images/No-Image-Placeholder.svg.png" id="image2" alt=""></td>
+            </tr>
+            <tr>
+                <th>Product Price</th>
+                <td id="price1">Price1</td>
+      
+                <td id="price2">Price2</td>
+            </tr>
+            <tr>
+
+            
+                <th>Product Brand</th>
+                <td id="brand1">Brand</td>
+
+                <td id="brand2">Brand</td>
+            </tr>
+            <tr>
+                <th>Product Description</th>
+                <td id="desc1">Description</td>
+         
+                <td id="desc2">Description</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="data.js"></script>
+    
+    <script>
+for(let i=1;i<product.length;i++)
+{
+    document.getElementById("select1").innerHTML +=
+    `
+     <option value="${i}">${product[i].title}</option>
+    `;
+    document.getElementById("select2").innerHTML +=
+    `
+     <option value="${i}">${product[i].title}</option>
+    `;
+}
+
+function item_1(val){
+    console.log(val)
+var select2 = document.getElementById("select2").value;
+if (val != select2)
+{
+        document.getElementById("image1").src = product[val].image;
+        document.getElementById("price1").innerHTML = product[val].price;
+        document.getElementById("brand1").innerHTML = product[val].brand;
+        document.getElementById("desc1").innerHTML = product[val].description;
+}
+else 
+{
+    document.getElementById("image1").src = product[0].image;
+}
+}
+function item_2(val){
+
+    var select1 = document.getElementById("select1").value;
+    if(val != select1)
+    {
+
+    
+        document.getElementById("image2").src = product[val].image;
+        document.getElementById("price2").innerHTML = product[val].price;
+        document.getElementById("brand2").innerHTML = product[val].brand;
+        document.getElementById("desc2").innerHTML = product[val].description;
+    }
+    else
+    {
+        document.getElementById("select1").src = product[0].image;
+    }    
+
+
+}
+
+    </script>
+</body>
+</html>
